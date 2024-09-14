@@ -25,10 +25,9 @@ st.markdown(
         color: #555;
         margin-bottom: 50px;
     }
-    iframe {
-        width: 100%;
-        height: 600px;
-        border: none;
+    .chat-container {
+        text-align: center;
+        margin-top: 50px;
     }
     </style>
     """, unsafe_allow_html=True
@@ -38,14 +37,25 @@ st.markdown(
 st.markdown('<h1 class="main-title">Welcome to the Chatbot App!</h1>', unsafe_allow_html=True)
 st.markdown('<p class="description">Interact with our AI-powered chatbot below and get instant responses.</p>', unsafe_allow_html=True)
 
-# Embed the chatbot in an iframe for larger view
+# Embed the chatbot and ensure it's more prominent by opening it automatically
 chatbot_html = """
-<iframe
-    src="https://www.chatbase.co/embed.min.html?chatbotId=fsSeMDx7lQ0ZkDeR16T8V&domain=www.chatbase.co"
-    allow="microphone; autoplay; encrypted-media;"
-    style="width: 100%; height: 600px;">
-</iframe>
+<div class="chat-container">
+<script>
+window.embeddedChatbotConfig = {
+    chatbotId: "fsSeMDx7lQ0ZkDeR16T8V",
+    domain: "www.chatbase.co",
+    openByDefault: true,  // This ensures the chatbot opens automatically in expanded form
+    welcomeMessage: "Hello! How can I assist you today?"
+}
+</script>
+<script
+src="https://www.chatbase.co/embed.min.js"
+chatbotId="fsSeMDx7lQ0ZkDeR16T8V"
+domain="www.chatbase.co"
+defer>
+</script>
+</div>
 """
 
-# Use st.components.v1.html to embed the larger chatbot iframe
+# Use st.components.v1.html to embed the chatbot
 components.html(chatbot_html, height=600)
