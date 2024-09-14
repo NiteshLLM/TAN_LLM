@@ -62,4 +62,4 @@ defer>
 """
 
 # Use st.components.v1.html to embed the chatbot
-components.html(chatbot_html, height=600)
+components.html(chatbot_html, height=200)
