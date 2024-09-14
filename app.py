@@ -25,10 +25,6 @@ st.markdown(
         color: #555;
         margin-bottom: 50px;
     }
-    .chat-container {
-        text-align: center;
-        margin-top: 50px;
-    }
     </style>
     """, unsafe_allow_html=True
 )
@@ -37,15 +33,24 @@ st.markdown(
 st.markdown('<h1 class="main-title">Welcome to the Chatbot App!</h1>', unsafe_allow_html=True)
 st.markdown('<p class="description">Interact with our AI-powered chatbot below and get instant responses.</p>', unsafe_allow_html=True)
 
-# Embed the chatbot and ensure it's more prominent by opening it automatically
+# Embed the chatbot and simulate opening it automatically
 chatbot_html = """
-<div class="chat-container">
 <script>
 window.embeddedChatbotConfig = {
     chatbotId: "fsSeMDx7lQ0ZkDeR16T8V",
     domain: "www.chatbase.co",
-    openByDefault: true,  // This ensures the chatbot opens automatically in expanded form
     welcomeMessage: "Hello! How can I assist you today?"
+}
+
+// Function to simulate opening the chatbot after the page loads
+window.onload = function() {
+    setTimeout(function() {
+        // Try to find the chatbot icon and trigger a click to open it
+        var chatbotIcon = document.querySelector('iframe');
+        if (chatbotIcon) {
+            chatbotIcon.click();  // Simulate a click
+        }
+    }, 1000);  // Delay for 1 second to ensure the chatbot has loaded
 }
 </script>
 <script
@@ -54,7 +59,6 @@ chatbotId="fsSeMDx7lQ0ZkDeR16T8V"
 domain="www.chatbase.co"
 defer>
 </script>
-</div>
 """
 
 # Use st.components.v1.html to embed the chatbot
