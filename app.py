@@ -2,14 +2,36 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-st.title("Hello Streamlit!")
-st.write("This is a simple Streamlit app.")
-st.write("You can deploy it on Streamlit Cloud!")
+# Set page configuration for a cleaner layout
+st.set_page_config(page_title="Chatbot Web App", layout="centered")
 
-# Add an input box and a button
-name = st.text_input("Enter your name:")
-if st.button("Submit"):
-    st.write(f"Hello, {name}!")
+# Add a custom CSS to style the app
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #f5f5f5;
+    }
+    .main-title {
+        font-size: 3em;
+        color: #4CAF50;
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    .description {
+        text-align: center;
+        font-size: 1.2em;
+        color: #555;
+        margin-bottom: 50px;
+    }
+    </style>
+    """, unsafe_allow_html=True
+)
+
+# Big heading
+st.markdown('<h1 class="main-title">Welcome to the Chatbot App!</h1>', unsafe_allow_html=True)
+st.markdown('<p class="description">Interact with our AI-powered chatbot below and get instant responses.</p>', unsafe_allow_html=True)
 
 # Embed the chatbot
 chatbot_html = """
